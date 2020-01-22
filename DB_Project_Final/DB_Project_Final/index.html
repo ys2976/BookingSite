@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+	<title>Flight Ticket Booking Website - A database project by Yun (Neal) Shu & Roberto Noel</title>
+
+	<!-- Google font -->
+	<link href="https://fonts.googleapis.com/css?family=PT+Sans:400" rel="stylesheet">
+
+	<!-- Bootstrap -->
+	<link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='bootstrap.min.css') }}" />
+
+	<!-- Custom stlylesheet -->
+	<link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+
+	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+	<!--[if lt IE 9]>
+		  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+		  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+		<![endif]-->
+	<style type="text/css">
+		.top-blank{
+			background-color: #000000;
+		}
+
+		.header{
+			font-family: "stylesheet";
+			font-size: 60px;
+			color: #FFFFFF;
+			margin: 0px 0px 0px 0px;
+			padding: 20px 0px 20px 35px;
+		}
+		.log{
+			padding: 2px 100px 30px 50px;
+			margin: 0px 0px -100px 0px;
+			background-color: rgb(20,20,20); !important;
+			color: white;
+			font-family: "stylesheet";
+		}
+		.staff-log{
+			padding: 5px 10px 10px 20px;
+			margin: 50px -10px 0px 2300px;
+			background-color: rgb(255,105,180); !important;
+			color: black;
+			border-radius: 5px;
+			font-family: "stylesheet";
+		}
+		.log-button{
+			background-color: orange;
+			font-family: "stylesheet";
+			font-size: 20px;
+			color: black;
+			border-radius: 10px;
+			padding: 0px 5px 0px 5px;
+		}
+	</style>
+</head>
+
+
+<body>
+	<div class="top-blank">
+		<h1 class="header">Flight Ticket Booking Website - A database project by Yun (Neal) Shu & Roberto Noel</h1>
+		<div class="log">
+			<h2><b>MEMBER</b></h2>
+			<button class="log-button" onclick="window.location.href = '/client_login'">LOGIN</button>
+			&nbsp &nbsp
+			<button class="log-button" onclick="window.location.href = '/client_register'">REGISTER</button>
+		</div>
+		<div class="staff-log">
+			<h4><b>FOR STAFF</b></h4>
+			<button style="font-size: 15px; background-color: black; color: white;" class="log-button" onclick="window.location.href = '/staff_login'">LOGIN</button>
+			&nbsp
+			<button style="font-size: 15px; background-color: black; color: white;" class="log-button" onclick="window.location.href = '/staff_register'">REGISTER</button>
+		</div>
+	</div>
+	<div id="booking" class="section">
+		<div class="section-center">
+			<div class="container">
+				<div class="row">
+					<div class="booking-form">
+						<form action = "/searchAuth" method = "Post">
+							<div class="form-group">
+								<div class="form-checkbox">
+									<label for="roundtrip">
+										<input type="radio" id="roundtrip" value = "roundtrip" name="flight-type" checked>
+										<span></span>Roundtrip
+									</label>
+									<label for="one-way">
+										<input type="radio" id="one-way" value = "one-way" name="flight-type">
+										<span></span>One Way
+									</label>
+									<label for="city">
+										<input type="radio" id="city" value = "city" name="search-by" checked>
+										<span></span>City
+									</label>
+									<label for="airport">
+										<input type="radio" id="airport" value = "airport" name="search-by">
+										<span></span>Airport
+									</label>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-6">
+									<div class="form-group">
+										<span class="form-label">Flying from</span>
+										<input name = "departs" class="form-control" type="text" placeholder="City or Airport">
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+										<span class="form-label">Flying to</span>
+										<input name = "arrives" class="form-control" type="text" placeholder="City or Airport">
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-3">
+									<div class="form-group">
+										<span class="form-label">Departing</span>
+										<input name = "depdate" class="form-control" type="date" required>
+									</div>
+								</div>
+								<div class="col-md-3">
+									<div class="form-group">
+										<span class="form-label">Returning</span>
+										<input name = "retdate" class="form-control" type="date">
+									</div>
+								</div>
+								<div class="col-md-3">
+									<div class="form-btn">
+										<button class="submit-btn">Show flights</button>
+									</div>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+
+</html>

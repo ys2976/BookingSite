@@ -1,0 +1,26 @@
+<html>
+<head>
+</head>
+<body>
+<h1>Airline: {{airline}}</h1>
+<h1>Flight #: {{flight}}</h1>
+<h1>Departure: {{departure}}</h1>
+<h1>Price: {{price}}</h1>
+
+<form action="/purchase" method="POST">
+	<span class="payment_type" required>
+							<input id="debit" type="radio" name="card_type" value="debit" checked>
+							<label for="debit">debit</label>
+							<input id="credit" type="radio" name="card_type" value="credit">
+							<label for="credit">credit</label>	 
+							
+	</span></br>
+	<input type="text" name = "card_no" placeholder="card number" required/> </br>
+	<input type="text" name = "name_on_card" placeholder="name on card" required/> </br>
+	<input type="text" name = "sec_code" placeholder="security code" required/> </br>
+	Exp Date: <input type="month" name = "exp_date" placeholder="expiration" required/> </br>
+
+	<input type="submit" value = Confirm Purchase>
+</form>
+</body>
+</html>

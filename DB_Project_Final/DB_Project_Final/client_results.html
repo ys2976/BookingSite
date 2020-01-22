@@ -1,0 +1,55 @@
+<html>
+<head>
+</head>
+<body> 
+<form action="/post" method="POST">
+	<h1>Welcome {{name}}</h1>
+</form>
+
+<style type="text/css">
+	table, th, td{
+		border: 1px solid black;
+	}
+</style>
+{% if purchased %}
+		<p class="error"><strong>You have already purchased this flight</strong> {{error}}</p>
+{% endif %}
+<div style="background-color:lightblue">
+	<table>
+		<th>Airline</th>
+		<th>Flight Number</th>
+		<th>Departure</th>
+		<th>From</th>
+		<th>Departure City</th>
+		<th>Estimated Arrival</th>
+		<th>To</th>
+		<th>Arrival City</th>
+		<th>Price</th>
+		<th>Purchase</th>
+
+	{% for line in data %}
+	<form action = "/render_purchase" method = "POST">
+		<tr>
+			<td name = airline_name>{{line['airline_name']}}</td>
+			<input type="hidden" name="airline_name" value="{{line['airline_name']}}" />
+			<td name = flight_no>{{line['flight_no']}}</td>
+			<input type="hidden" name="flight_no" value="{{line['flight_no']}}" />
+			<td name = "departure_date_time">{{line['departure_date_time']}}</td>
+			<input type="hidden" name="departure_date_time" value="{{line['departure_date_time']}}" />
+			<td>{{line['departs_from']}}</td>
+			<td>{{line['departure_city']}}</td>
+			<td>{{line['arrival_date_time']}}</td>
+			<td>{{line['arrives_from']}}</td>
+			<td>{{line['arrival_city']}}</td>
+			<td name = "departure_date_time">{{line['real_price']}}</td>
+			<input type="hidden" name="real_price" value="{{line['real_price']}}" />
+			<td><input type="submit" value = Purchase></td>
+		</tr>
+	</form>
+	{% endfor %}
+	</table>
+</div>
+</body>
+
+
+</html>

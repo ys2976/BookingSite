@@ -1,0 +1,21 @@
+<html>
+<head>
+</head>
+<body>
+<form action="/SloginAuth" method="POST">
+	<input type="text" name = "username" placeholder="username" required/> </br>
+	<input type="password" name = "password" placeholder="password" required/></br>
+	Airline: 
+		<select name = "airline_name" required>
+		{% for line in data %}
+			<option value = "{{line['airline_name']}}">{{line['airline_name']}}</option>			
+		{% endfor %}
+		</select> </br>
+	<input type="submit" value = login>
+	{% if error %}
+		<p class="error"><strong>Error:</strong> {{error}}</p>
+	{% endif %}
+</form>
+<a href="/">Go back</a>
+</body>
+</html>

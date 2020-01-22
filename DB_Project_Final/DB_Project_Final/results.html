@@ -1,0 +1,44 @@
+<html>
+<head>
+</head>
+<body> 
+<form action="/post" method="POST">
+	<h1>Welcome {{username}}</h1>
+</form>
+
+<style type="text/css">
+	table, th, td{
+		border: 1px solid black;
+	}
+</style>
+<div style="background-color:lightblue">
+	<table>
+		<th>Airline</th>
+		<th>Flight Number</th>
+		<th>Departure</th>
+		<th>From</th>
+		<th>Departure City</th>
+		<th>Estimated Arrival</th>
+		<th>To</th>
+		<th>Arrival City</th>
+		<th>Price</th>
+
+	{% for line in data %}
+		<tr>
+			<td>{{line['airline_name']}}</td>
+			<td>{{line['flight_no']}}</td>
+			<td>{{line['departure_date_time']}}</td>
+			<td>{{line['departs_from']}}</td>
+			<td>{{line['departure_city']}}</td>
+			<td>{{line['arrival_date_time']}}</td>
+			<td>{{line['arrives_from']}}</td>
+			<td>{{line['arrival_city']}}</td>
+			<td>{{line['real_price']}}</td>
+		</tr>
+	{% endfor %}
+	</table>
+</div>
+</body>
+
+
+</html>

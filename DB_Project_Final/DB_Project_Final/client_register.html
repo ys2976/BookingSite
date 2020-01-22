@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+	<!-- Custom stlylesheet -->
+	<link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+
+	<style type="text/css">
+		@import "compass/css3";
+
+		$padding-horizontal:20px;
+		$highlight-color:#16abf0;
+		body{
+		  background:#34495e;
+		  color:white;
+		  text-align:center;
+		  font-family:Helvetica, Arial, sans-serif;
+		  font-size:10pt;
+		}
+		form{
+		  width:500px;
+		  margin:0 auto;
+		  background:white;
+		  border-radius:10px;
+		  margin-bottom:20px;
+		  //padding:20px;
+		}
+		input, .floating-placeholder{
+		  font-family:Helvetica, Arial, sans-serif;
+		  font-size:20pt;
+		  line-height:2.6em;
+		  height:2.6em;
+		  margin:0;
+		  padding:0;
+		  width:100%;
+		}
+		.floating-placeholder input:focus+label{
+		  color:$highlight-color;
+		}
+		.floating-placeholder input[value]+label{
+		  color:red;
+		}
+		.floating-placeholder{
+		  position:relative;
+		}
+
+		.floating-placeholder input{
+		  font-size:20pt;
+		  border:none;
+		  outline:none;
+		  position:absolute;
+		  top:0;
+		  left:0;
+		  display:block;
+		  background:transparent;
+		  z-index:2;
+		  border-bottom:1px solid #ccc;
+		  text-indent:$padding-horizontal;
+		}
+
+		.floating-placeholder:last-child input{
+		  border-bottom:none;
+		}
+		.floating-placeholder label{
+		  display:block;
+		  position:absolute;
+		  top:0;
+		  left:$padding-horizontal;
+		  font-size:20pt;
+		  z-index:1;
+		  @include transform-origin(0,0.0em);
+		  @include transition(transform 160ms, color 200ms);
+		  @include transform(scale(1,1) rotateY(0));
+		  color:#999;
+		}
+		.floating-placeholder-float label{
+		  @include transform(scale(0.55,0.55) rotateY(0));
+		}
+		.floating-placeholder-float input{
+		  line-height:3.4em;
+		}
+	</style>
+	<script type="text/javascript">
+		$(document).ready(function(){
+		  function updateText(event){
+		    var input=$(this);
+		    setTimeout(function(){
+		      var val=input.val();
+		      if(val!="")
+		        input.parent().addClass("floating-placeholder-float");
+		      else
+		        input.parent().removeClass("floating-placeholder-float");
+		    },1)
+		  }
+		  $(".floating-placeholder input").keydown(updateText);
+		  $(".floating-placeholder input").change(updateText);
+		});
+	</script>
+</head>
+<body>
+<div id="customer-register">
+	<form action="/CregisterAuth" method="POST">
+		<div id="account-info">
+			<div class="floating-placeholder">
+				<input id="email" type="text" name = "email" placeholder="email" required/> </br>
+			</div>
+			<div>
+				<input id="password" type="password" name = "password" placeholder="password" required/></br>
+			</div>
+			<input type="text" name = "name" placeholder="name" required/></br>
+		</div>
+		<div id="birth">
+			Date of Birth: </br><input type="date" name = "date_of_birth" placeholder="date of birth: mm/dd/yy" required/></br>
+		</div>
+		<div id="address">
+			<input type="text" name = "state" placeholder="state" required/></br>
+			<input type="text" name = "city" placeholder="city" required/></br>
+			<input type="text" name = "street" placeholder="street" required/></br>
+			<input type="text" name = "building_no" placeholder="building number" required/></br>
+		</div>
+		<div id="customer-info">
+			<input type="text" name = "phone_no" placeholder="phone" required/></br>
+			<input type="text" name = "passport_no" placeholder="passport number" required/></br>
+			Passport Exp Date:</br><input type="date" name = "passport_exp" placeholder="expiration: yyyy/mm/dd" required/></br>
+			<input type="text" name = "passport_country" placeholder="passport country" required/></br>
+		</div>
+		<div id="submit-button">
+			<input type="submit" value = Register />
+		</div>
+		{% if error %}
+			<p class="error"><strong>Error:</strong> {{error}}</p>
+		{% endif %}
+	</form>
+</div>
+
+<!--
+<a href="/">Go back</a>
+-->
+<button onclick="window.location.href = '/'">GO BACK</button>
+</body>
+</html>

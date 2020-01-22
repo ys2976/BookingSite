@@ -1,0 +1,43 @@
+<html>
+<head>
+</head>
+<body> 
+<form action="/ViewTopDestinations" method="POST">
+	<h1>Welcome {{username}}</h1>
+</form>
+
+<style type="text/css">
+	table, th, td{
+		border: 1px solid black;
+	}
+</style>
+
+<div>
+	<table>
+		<th>City</th>
+		<th>Number of Flights (Past 3 Months)</th>>
+	{% for line in data1 %}
+		<tr>
+			<td>{{line['city']}}</td>
+			<td>{{line['count']}}</td>
+		</tr>
+	{% endfor %}
+	</table>
+</div>
+<div>
+	<table>
+		<th>City</th>
+		<th>Number of Flights (Past Year)</th>>
+	{% for line in data2 %}
+		<tr>
+			<td>{{line['city']}}</td>
+			<td>{{line['count']}}</td>
+		</tr>
+	{% endfor %}
+	</table>
+</div>
+
+</body>
+
+
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE HTML>
+<html>
+<head>  
+<script>
+window.onload = function () {
+var dataArrayX = {{dataX|tojson}};
+var dataArrayY = {{dataY|tojson}};
+var dps = [];   //dataPoints. 
+
+function parseDataPoints () {
+    for (var i = 0; i <= dataArrayX.length; i++)   
+      dps.push({label: String(dataArrayX[i]), y: dataArrayY[i]});     
+ };
+
+parseDataPoints();
+
+var chart = new CanvasJS.Chart("chartContainer", {
+	animationEnabled: true,
+	theme: "light2", // "light1", "light2", "dark1", "dark2"
+	title:{
+		text: "Monthly Spending"
+	},
+	axisY: {
+		title: "Dollars Spent"
+	},
+	data: [{        
+		type: "column",  
+		showInLegend: true, 
+		legendMarkerColor: "grey",
+		legendText: "Spending in Dollars per Month",
+		dataPoints: dps
+	}]
+});
+chart.render();
+
+}
+</script>
+</head>
+<body>
+<a href="/client_home">Home</a>
+<h1>Total Annual Spending: {{total}}</h1>
+<form action="/date_range" method="POST">
+	<input name = "start" type = "date" required/>
+	<input name = "end" type = "date" required/>
+	<input type = "submit" value = "Show"/>
+</form>
+{% if message %}
+<p>{{message}}</p>
+{% else %}
+<p>Showing 6 month spending</p>
+{% endif %}
+
+<div id="chartContainer" style="height: 300px; width: 100%;"></div>
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+</body>
+</html>

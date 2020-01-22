@@ -1,0 +1,45 @@
+<html>
+<head>
+</head>
+<body> 
+<form action="/post" method="POST">
+	<h1>Welcome {{username}}</h1>
+</form>
+
+<style type="text/css">
+	table, th, td{
+		border: 1px solid black;
+	}
+</style>
+<div>
+	<table>
+		<th>Flight Number</th>
+		<th>Departure Date and Time</th>
+		<th>From</th>
+		<th>Estimated Arrival</th>
+		<th>To</th>
+		<th>Base Price</th>
+		<th>Flight Status</th>
+
+
+
+	{% for line in data %}
+		<tr>
+
+			<td>{{line['flight_no']}}</td>
+			<td>{{line['departure_date_time']}}</td>
+			<td>{{line['departs_from']}}</td>
+			<td>{{line['arrival_date_time']}}</td>
+			<td>{{line['arrives_from']}}</td>
+			<td>{{line['base_price']}}</td>
+			<td>{{line['flight_status']}}</td>
+
+		</tr>
+	{% endfor %}
+	</table>
+</div>
+
+</body>
+
+
+</html>

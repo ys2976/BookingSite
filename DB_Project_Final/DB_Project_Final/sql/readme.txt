@@ -1,0 +1,1 @@
+Only run the server_setup.sql file, it has all the tables + the inserts

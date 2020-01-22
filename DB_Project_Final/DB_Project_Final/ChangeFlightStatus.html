@@ -1,0 +1,81 @@
+<html>
+<head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+.checked {
+  color: orange;
+}
+</style>
+</head>
+<body> 
+<form action="/ChangeFlightStatus" method="POST">
+	<h1>Welcome {{username}}:</h1>
+</form>
+<h3>Update Flight Status:</h3>
+<style type="text/css">
+	table, th, td{
+		border: 1px solid black;
+	}
+</style>
+<div>
+	<table>
+		<th>#</th>
+		<th>planeID</th>
+		<th>airline_name</th>
+		<th>flight_no</th>
+		<th>departure_date_time</th>
+		<th>arrival_date_time</th>
+		<th>departs_from</th>
+		<th>arrives_from</th>
+		<th>flight_status</th>
+	{% set count = namespace(a=0) %}
+	{% for line in data %}
+		{% set count.a = count.a + 1 %}
+		<form action="/flight_status" method="POST">
+			<tr>
+				<td>{{count.a}}</td>
+				<td>{{line['planeID']}}</td>
+				<td name = airline_name>{{line['airline_name']}}</td>
+				<input type="hidden" name="airline_name" value="{{line['airline_name']}}" />
+				<td name = "flight_no">{{line['flight_no']}}</td>
+				<input type="hidden" name="flight_no" value="{{line['flight_no']}}" />
+				<td name = departure_date_time>{{line['departure_date_time']}}</td>
+				<input type="hidden" name="departure_date_time" value="{{line['departure_date_time']}}" />
+				<td>{{line['arrival_date_time']}}</td>
+				<td>{{line['departs_from']}}</td>
+				<td>{{line['arrives_from']}}</td>
+				<td>{{line['base_price']}}</td>
+				
+					<td><span class="flight_status" required>
+							<input id="ontime" type="radio" name="flight_status" value="ontime" checked>
+							<label for="ontime">ontime</label>
+							<input id="delayed" type="radio" name="flight_status" value="delayed">
+							<label for="delayed">delayed</label>
+						</span>
+					</td>
+					<td><input type="submit" value = Submit></td>
+				<td>{{line['flight_status']}}</td>
+
+			</tr>
+		</form>
+	{% endfor %}
+	</table>
+</div>
+<div>
+ <table>
+  <th>flight_status</th>
+  <th>count</th>
+ {% for line in data2 %}
+  <form action="/flight_status" method="POST">
+   <tr>
+    <td>{{line['flight_status']}}</td>
+    <td>{{line['count']}}</td>
+   </tr>
+  </form>
+ {% endfor %}
+ </table>
+</div>
+</body>
+
+
+</html>

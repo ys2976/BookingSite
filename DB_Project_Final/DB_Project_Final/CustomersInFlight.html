@@ -1,0 +1,35 @@
+<html>
+<head>
+</head>
+<body> 
+<form action="/post" method="POST">
+	<h1>Welcome {{username}}</h1>
+</form>
+
+<style type="text/css">
+	table, th, td{
+		border: 1px solid black;
+	}
+</style>
+<div>
+	<table>
+		<th>Flight Number</th>
+		<th>Departure Date and Time</th>
+		<th>email</th>
+
+
+
+	{% for line in data %}
+		<tr>
+			<td>{{line['flight_no']}}</td>
+			<td>{{line['departure_date_time']}}</td>
+			<td>{{line['email']}}</td>
+		</tr>
+	{% endfor %}
+	</table>
+</div>
+
+</body>
+
+
+</html>

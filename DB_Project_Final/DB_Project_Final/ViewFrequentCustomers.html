@@ -1,0 +1,89 @@
+<html>
+<head>
+</head>
+<body> 
+<form action="/post" method="POST">
+	<h1>Welcome {{username}}</h1>
+</form>
+
+<style type="text/css">
+	table, th, td{
+		border: 1px solid black;
+	}
+</style>
+<div>
+	<h2>MOST FREQUENT CUSTOMER</h2>
+	<table>
+		<th>email</th>
+		<th>name</th>
+		<th>date_of_birth</th>
+		<th>state</th>
+		<th>city</th>
+		<th>street</th>
+		<th>building_no</th>
+		<th>phone_no</th>
+	{% for line in data1 %}
+		<tr>
+			<td>{{line['email']}}</td>
+			<td>{{line['name']}}</td>
+			<td>{{line['date_of_birth']}}</td>
+			<td>{{line['state']}}</td>
+			<td>{{line['city']}}</td>
+			<td>{{line['street']}}</td>
+			<td>{{line['building_no']}}</td>
+			<td>{{line['phone_no']}}</td>
+		</tr>
+	{% endfor %}
+	</table>
+</div>
+<div>
+	<h2>Flights Taken By Customers</h2>
+	<table>
+		<th>email</th>
+		<th>name</th>
+		<th>date_of_birth</th>
+		<th>state</th>
+		<th>city</th>
+		<th>street</th>
+		<th>building_no</th>
+		<th>phone_no</th>
+		<th>ticketID</th>
+		<th>flight_no</th>
+		<th>departure_date_time</th>
+		<th>departs_from</th>
+		<th>arrives_from</th>
+		<th>purchase_date_time</th>
+		<th>base_price</th>
+		<th>sold_price</th>
+		<th>flight_status</th>
+
+
+	{% for line in data2 %}
+		<tr>
+			<td>{{line['email']}}</td>
+			<td>{{line['name']}}</td>
+			<td>{{line['date_of_birth']}}</td>
+			<td>{{line['state']}}</td>
+			<td>{{line['city']}}</td>
+			<td>{{line['street']}}</td>
+			<td>{{line['building_no']}}</td>
+			<td>{{line['phone_no']}}</td>
+			<td>{{line['ticketID']}}</td>
+			<td>{{line['flight_no']}}</td>
+			<td>{{line['departure_date_time']}}</td>
+			<td>{{line['departs_from']}}</td>
+			<td>{{line['arrives_from']}}</td>
+			<td>{{line['purchase_date_time']}}</td>
+			<td>{{line['base_price']}}</td>
+			<td>{{line['sold_price']}}</td>
+			<td>{{line['flight_status']}}</td>
+
+		</tr>
+	{% endfor %}
+	</table>
+</div>
+
+</body>
+
+
+</html>

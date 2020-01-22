@@ -1,0 +1,210 @@
+<html>
+<head>
+</head>
+<body> 
+<form action="/post" method="POST">
+	<h1>{{airline_name}}</h1>
+	<h1>Welcome {{username}}</h1>
+</form>
+
+<div id="Add new airport in the system" class="section">
+	<form action="/add_number" method="POST">
+		<h2>Add new phone number in system</h2>
+		<input type="text" name = "phone_number" placeholder="phone number" required/> </br>
+		<input type="submit" value = 'Add new phone_number' />
+	</form>
+</div>
+<style type="text/css">
+	table, th, td{
+		border: 1px solid black;
+	}
+</style>
+<h2>Future Flights (Next 30 Days)</h2>
+<div>
+	<table>
+		<th>#</th>
+		<th>planeID</th>
+		<th>airline_name</th>
+		<th>flight_no</th>
+		<th>departure_date_time</th>
+		<th>arrival_date_time</th>
+		<th>departs_from</th>
+		<th>arrives_from</th>
+		<th>base_price</th>
+		<th>flight_status</th>
+	{% set count = namespace(a=0) %}
+	{% for line in data2 %}
+		{% set count.a = count.a + 1 %}
+		<form action="/flight_status" method="POST">
+			<tr>
+				<td>{{count.a}}</td>
+				<td>{{line['planeID']}}</td>
+				<td name = airline_name>{{line['airline_name']}}</td>
+				<input type="hidden" name="airline_name" value="{{line['airline_name']}}" />
+				<td name = "flight_no">{{line['flight_no']}}</td>
+				<input type="hidden" name="flight_no" value="{{line['flight_no']}}" />
+				<td name = departure_date_time>{{line['departure_date_time']}}</td>
+				<input type="hidden" name="departure_date_time" value="{{line['departure_date_time']}}" />
+				<td>{{line['arrival_date_time']}}</td>
+				<td>{{line['departs_from']}}</td>
+				<td>{{line['arrives_from']}}</td>
+				<td>{{line['base_price']}}</td>
+				<td>{{line['flight_status']}}</td>
+			</tr>
+		</form>
+	{% endfor %}
+	</table>
+</div>
+<div id="ViewFlights" class="section">
+	<form action="/ViewFlights" method="POST">
+		<h2>View Flights</h2>
+		Depaeture Date and Time From: <input type="date" name="departure_date_time_from" placeholder="departure_date_time"><br>
+		Depaeture Date and Time To: <input type="date" name="departure_date_time_to" placeholder="departure_date_time"><br>
+		Departs From: 
+		<select name = "departs_from">
+		{% for line in data4 %}
+			<option value = {{line['departs_from']}}>{{line['departs_from']}}</option>			
+		{% endfor %}
+		</select>
+		Arrives AT: 
+		<select name = "arrives_from">
+		{% for line in data5 %}
+			<option value = {{line['arrives_from']}}>{{line['arrives_from']}}</option>			
+		{% endfor %}
+		</select>
+		<input type="submit" value = 'ViewFlights' />
+	</form>
+</div>
+
+<div id="ViewCustFlights" class="section">
+	<form action="/ViewCustFlights" method="POST">
+		<h2>View Customer Flights</h2>
+		<input type="text" name = email placeholder = "customer email" />
+		<input type="submit" value = 'ViewFlights' />
+	</form>
+</div>
+
+<div id="CustomersInFlight" class="section">
+	 <form action="/CustomersInFlight" method="POST">
+	  <h2>CustomersInFlight</h2>
+	  Flight Number: <input type="text" name="flight_no" placeholder="flight_no"><br>
+	  <input type="submit" value = 'CustomersInFlight' />
+	 </form>
+</div>
+<div id="AddNewFlights" class="section">
+	<form action = "/AddNewFlights" method = "Post">
+		<h2>Add A New Flight</h2>
+		PlaneID: 
+		<select name = "planeID">
+		{% for line in data3 %}
+			<option value = {{line['planeID']}}>{{line['planeID']}}</option>			
+		{% endfor %}
+		</select>
+		Flight Number: <input type="text" name="flight_no" placeholder="flight_no"><br>
+		Depaeture Date and Time: <input type="datetime-local" name="departure_date_time" placeholder="departure_date_time"><br>
+		Arrival Date and Time: <input type="datetime-local" name="arrival_date_time" placeholder="arrival_date_time"><br>
+		Departs From: 
+		<select name = "departs_from">
+		{% for line in data6 %}
+			<option value = {{line['name']}}>{{line['name']}}</option>			
+		{% endfor %}
+		</select>
+		Arrives AT: 
+		<select name = "arrives_from">
+		{% for line in data6 %}
+			<option value = {{line['name']}}>{{line['name']}}</option>			
+		{% endfor %}
+		</select>
+		Base Price: <input type="text" name="base_price" placeholder="base_price"><br>
+		Flight Status:	<div class="form-checkbox">
+							<label for="ontime">
+								<input type="radio" id="ontime" value = "ontime" name="flight_status" checked>
+								<span></span>On-time
+							</label>
+							<label for="delayed">
+								<input type="radio" id="delayed" value = "delayed" name="flight_status">
+								<span></span>Delayed
+							</label>
+						</div>
+		<input type="submit" value="Submit">
+	</form>
+</div>
+<div id="Change Status of flights" class="section">
+	<form action="/ChangeFlightStatus" method="POST">
+		<h2>Change Status of flights</h2>
+		<input type="submit" value = 'Change Status of flights' />
+	</form>
+</div>
+
+<div id="Add airplane in the system" class="section">
+	<form action="AddNewPlane" method="POST">
+		<h2>Add airplane in the system</h2>
+		<input type="text" name = "planeID" placeholder="planeID" required/> </br>
+		<input type= "Number" name = "seats" placeholder="seats" required/> </br>
+		<input type="submit" value = 'Add airplane in the system' />
+	</form>
+	<table>
+		<th>planeID</th>
+	{% for line in data3 %}
+		<tr>
+			<td>{{line['planeID']}}</td>
+		</tr>
+	{% endfor %}
+	</table>
+</div>
+
+<div id="Add new airport in the system" class="section">
+	<form action="/AddNewAirport" method="POST">
+		<h2>Add new airport in the system</h2>
+		<input type="text" name = "name" placeholder="Airport Name" required/> </br>
+		<input type= "text" name = "city" placeholder="Abbr for City" required/> </br>
+		<input type="submit" value = 'Add new airport in the system' />
+	</form>
+</div>
+
+<div id="View flight ratings" class="section">
+	<form action="/ViewFlightRatings" method="POST">
+		<h2>View flight ratings</h2>
+		<input type="submit" value = 'View flight ratings' />
+	</form>
+</div>
+
+<div id="View frequent customers" class="section">
+	<form action="/ViewFrequentCustomers" method="POST">
+		<h2>View frequent customers</h2>
+		<input type="submit" value = 'View frequent customers' />
+	</form>
+</div>
+
+<div id="View reports" class="section">
+	<form action="/ViewReports" method="POST">
+		<h2>View reports</h2>
+		From:
+		<input type="Date" name = "from_departure_date_time" placeholder="FromTime" required/> </br>
+		To:
+		<input type= "Date" name = "to_departure_date_time" placeholder="ToTime" required/> </br>
+		<input type="submit" value = 'View reports' />
+	</form>
+</div>
+
+<div id="View quarterly revenue earned" class="section">
+	<form action="/ViewQuarterlyRevenueEarned" method="POST">
+		<h2>View quarterly revenue earned</h2>
+		<input type="submit" value = 'View quarterly revenue earned' />
+	</form>
+</div>
+
+<div id="View Top destinations" class="section">
+	<form action="/ViewTopDestinations" method="POST">
+		<h2>View Top destinations</h2>
+		<input type="submit" value = 'View Top destinations' />
+	</form>
+</div>
+
+<a href="/Slogout">Logout</a>
+
+
+</body>
+
+
+</html>

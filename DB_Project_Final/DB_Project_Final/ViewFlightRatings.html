@@ -1,0 +1,67 @@
+<html>
+<head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+.checked {
+  color: orange;
+}
+</style>
+</head>
+<body> 
+<form action="/ViewFlightRatings" method="POST">
+	<h1>Welcome {{username}}:</h1>
+</form>
+<h3>Flight Ratings</h3>
+<style type="text/css">
+	table, th, td{
+		border: 1px solid black;
+	}
+</style>
+<div>
+	<table>
+		<th>email</th>
+		<th>airline_name</th>
+		<th>flight_no</th>
+		<th>departure_date_time</th>
+		<th>rating</th>>
+		<th>comment</th>>
+	{% set count = namespace(a=0) %}
+	{% for line in data %}
+		<form action="/ViewFlightRatings" method="POST">
+			<tr>
+				<td>{{line['email']}}</td>
+				<td>{{line['airline_name']}}</td>
+				<td>{{line['flight_no']}}</td>
+				<td>{{line['departure_date_time']}}</td>
+				<td>{{line['rating']}}</td>
+				<td>{{line['comment']}}</td>
+			</tr>
+		</form>
+	{% endfor %}
+	</table>
+</div>
+
+<h3>Average Ratings</h3>
+<div>
+	<table>
+		<th>airline_name</th>
+		<th>flight_no</th>
+		<th>departure_date_time</th>
+		<th>avg_rating</th>>
+	{% set count = namespace(a=0) %}
+	{% for line in data2 %}
+		<form action="/ViewFlightRatings" method="POST">
+			<tr>
+				<td>{{line['airline_name']}}</td>
+				<td>{{line['flight_no']}}</td>
+				<td>{{line['departure_date_time']}}</td>
+				<td>{{line['rating']}}</td>
+			</tr>
+		</form>
+	{% endfor %}
+	</table>
+</div>
+</body>
+
+
+</html>

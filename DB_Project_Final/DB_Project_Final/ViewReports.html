@@ -1,0 +1,96 @@
+<!DOCTYPE HTML>
+<html>
+<head>  
+<script>
+window.onload = function () {
+var dataArrayX = {{dataX|tojson}};
+var dataArrayY = {{dataY|tojson}};
+var dps = [];   //dataPoints. 
+
+function parseDataPoints () {
+    for (var i = 0; i <= dataArrayX.length; i++)   
+      dps.push({label: String(dataArrayX[i]), y: dataArrayY[i]});     
+ };
+
+parseDataPoints();
+
+var chart = new CanvasJS.Chart("chartContainer", {
+ animationEnabled: true,
+ theme: "light2", // "light1", "light2", "dark1", "dark2"
+ title:{
+  text: "Monthly Revenue"
+ },
+ axisY: {
+  title: "RMB"
+ },
+ data: [{        
+  type: "column",  
+  showInLegend: true, 
+  legendMarkerColor: "grey",
+  legendText: "Revenue in RMB",
+  dataPoints: dps
+ }]
+});
+chart.render();
+
+}
+</script>
+</head>
+<body>
+<form action="/post" method="POST">
+	<h1>Welcome {{username}}</h1>
+</form>
+<div id="chartContainer" style="height: 300px; width: 100%;"></div>
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+<style type="text/css">
+	table, th, td{
+		border: 1px solid black;
+	}
+</style>
+<div>
+	<table>
+		<th>airline_name</th>
+		<th>no_ticket_sold</th>
+
+
+	{% for line in data1 %}
+		<tr>
+			<td>{{line['airline_name']}}</td>
+			<td>{{line['No_ticket_sold']}}</td>
+		</tr>
+	{% endfor %}
+	</table>
+</div>
+
+<h3>last year</h3>
+<div>
+	<table>
+		<th>airline_name</th>
+		<th>no_ticket_sold</th>
+
+
+	{% for line in data2 %}
+		<tr>
+			<td>{{line['airline_name']}}</td>
+			<td>{{line['No_ticket_sold']}}</td>
+		</tr>
+	{% endfor %}
+	</table>
+</div>
+<h3>last month</h3>
+<div>
+	<table>
+		<th>airline_name</th>
+		<th>no_ticket_sold</th>
+
+
+	{% for line in data3 %}
+		<tr>
+			<td>{{line['airline_name']}}</td>
+			<td>{{line['No_ticket_sold']}}</td>
+		</tr>
+	{% endfor %}
+	</table>
+</div>
+</body>
+</html>
