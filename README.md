@@ -1,11 +1,21 @@
-# Shanghai New York University Project for Databases CSCI-SHU 213 Summer 2019 Professor Ratan Dey
+# Shanghai New York University Project for Databases CSCI-SHU 213 Summer 2019 
+Professor: Ratan Dey
+Team member: Neal Shu, Roberto Noel
 
-# Objective:
+## Objective:
 The objective of this course project is to provide a realistic experience in the design process of a
 relational database and corresponding applications. We will focus on conceptual design, logical design,
 implementation, operation, maintenance of a relational database. We will also implement an associated
 web based application to communicate with the database (retrieve information, store information etc). 
-# File Description
+
+## Project Overview:
+The course project for this semester is online Air Ticket Reservation System. Using this system,
+customers can search for flights (one way or round trip), purchase flights ticket, view their future flight
+status or see their past flights etc. There will be two types of users of this system - Customers and Airline
+Staff (Administrator). Airline Staff will add new airplanes, create new flights, and update flight status. In
+general, this will be simple air ticket reservation system. 
+
+## File Description
 Quick Note: Make sure path and static path is correct for python file.
 
 1. pject.py ~ python backend, uses flask and pymysql to render templates and execute queries. (must change static folder path etc.)
