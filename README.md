@@ -68,13 +68,13 @@ Airline Staff can query for how many flights get delayed/on-time etc.<br /><br /
 
 ## Use Cases
 **REQUIRED Application Use Cases (aka features):**<br /><br />
-1. View Public Info: All users, whether logged in or not, can<br /><br />
+1. **View Public Info:** All users, whether logged in or not, can<br /><br />
 a. Search for future flights based on source city/airport name, destination city/airport name,
 departure date for one way (departure and return dates for round trip).<br /><br />
 b. Will be able to see the flights status based on airline name, flight number, arrival/departure
 date.<br /><br />
-2. Register: 2 types of user registrations (Customer and Airline Staff) option via forms.<br /><br />
-3. Login: 2 types of user login (Customer and Airline Staff). Users enters their username (email address
+2. **Register:** 2 types of user registrations (Customer and Airline Staff) option via forms.<br /><br />
+3. **Login:** 2 types of user login (Customer and Airline Staff). Users enters their username (email address
 will be used as username), x, and password, y, via forms on login page. This data is sent as POST
 parameters to the login-authentication component, which checks whether there is a tuple in the Person
 table with username=x and the password = md5(y).<br /><br />
@@ -97,49 +97,49 @@ future flights information on the customer's home page, or you may prefer to jus
 when he/she does some of the following use cases.<br /><br />
 ### **Customer use cases:**<br /><br />
 After logging in successfully a user(customer) may do any of the following use cases:<br /><br />
-4. View My flights: Provide various ways for the user to see flights information which he/she purchased.
+4. **View My flights:** Provide various ways for the user to see flights information which he/she purchased.
 The default should be showing for the future flights. Optionally you may include a way for the user to
 specify a range of dates, specify destination and/or source airport name or city name etc.<br /><br />
-5. Search for flights: Search for future flights (one way or round trip) based on source city/airport name,
+5. **Search for flights:** Search for future flights (one way or round trip) based on source city/airport name,
 destination city/airport name, dates (departure or return).<br /><br />
-6. Purchase tickets: Customer chooses a flight and purchase ticket for this flight, providing all the
+6. **Purchase tickets:** Customer chooses a flight and purchase ticket for this flight, providing all the
 needed data, via forms. You may find it easier to implement this along with a use case to search for
 flights.<br /><br />
-6. Give Ratings and Comment on previous flights: Customer will be able to rate and comment on their
+6. **Give Ratings and Comment on previous flights:** Customer will be able to rate and comment on their
 previous flights (for which he/she purchased tickets and already took that flight) for the airline they
 logged in.<br /><br />
-7.Track My Spending: Default view will be total amount of money spent in the past year and a bar
+7.**Track My Spending:** Default view will be total amount of money spent in the past year and a bar
 chart showing month wise money spent for last 6 months. He/she will also have option to specify a
 range of dates to view total amount of money spent within that range and a bar chart showing month
 wise money spent within that range.<br /><br />
-8.Logout: The session is destroyed and a “goodbye” page or the login page is displayed.<br /><br />
+8.**Logout:** The session is destroyed and a “goodbye” page or the login page is displayed.<br /><br />
 ### **Airline Staff use cases:**<br /><br />
 After logging in successfully an airline staff may do any of the following use cases:<br /><br />
-4. View flights: Defaults will be showing all the future flights operated by the airline he/she works for
+4. **View flights:** Defaults will be showing all the future flights operated by the airline he/she works for
 the next 30 days. He/she will be able to see all the current/future/past flights operated by the airline
 he/she works for based range of dates, source/destination airports/city etc. He/she will be able to see
 all the customers of a particular flight.<br /><br />
-5. Create new flights: He or she creates a new flight, providing all the needed data, via forms. The
+5. **Create new flights:** He or she creates a new flight, providing all the needed data, via forms. The
 application should prevent unauthorized users from doing this action. Defaults will be showing all the
 future flights operated by the airline he/she works for the next 30 days.<br /><br />
-6. Change Status of flights: He or she changes a flight status (from on-time to delayed or vice versa) via
+6. **Change Status of flights:** He or she changes a flight status (from on-time to delayed or vice versa) via
 forms.<br /><br />
-7. Add airplane in the system: He or she adds a new airplane, providing all the needed data, via forms.
+7. **Add airplane in the system:** He or she adds a new airplane, providing all the needed data, via forms.
 The application should prevent unauthorized users from doing this action. In the confirmation page,
 she/he will be able to see all the airplanes owned by the airline he/she works for.<br /><br />
-8. Add new airport in the system: He or she adds a new airport, providing all the needed data, via
+8. **Add new airport in the system:** He or she adds a new airport, providing all the needed data, via
 forms. The application should prevent unauthorized users from doing this action.<br /><br />
-9. View flight ratings: Airline Staff will be able to see each flight’s average ratings and all the comments
+9. **View flight ratings:** Airline Staff will be able to see each flight’s average ratings and all the comments
 and ratings of that flight given by the customers.<br /><br />
-10. View frequent customers: Airline Staff will also be able to see the most frequent customer within
+10. **View frequent customers:** Airline Staff will also be able to see the most frequent customer within
 the last year. In addition, Airline Staff will be able to see a list of all flights a particular Customer has
 taken only on that particular airline.<br /><br />
-11. View reports: Total amounts of ticket sold based on range of dates/last year/last month etc. Month
+11. **View reports:** Total amounts of ticket sold based on range of dates/last year/last month etc. Month
 wise tickets sold in a bar chart.<br /><br />
-12. View quarterly revenue earned: Draw a pie chart for showing total amount of revenue earned from
+12. **View quarterly revenue earned:** Draw a pie chart for showing total amount of revenue earned from
 for each quarter of the last year.<br /><br />
-13. View Top destinations: Find the top 3 most popular destinations for last 3 months and last year.<br /><br />
-14. Logout: The session is destroyed and a “goodbye” page or the login page is displayed.<br /><br />
+13. **View Top destinations:** Find the top 3 most popular destinations for last 3 months and last year.<br /><br />
+14. **Logout:** The session is destroyed and a “goodbye” page or the login page is displayed.<br /><br />
 
 ## File Description
 Quick Note: Make sure path and static path is correct for python file.
