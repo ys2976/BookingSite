@@ -1,5 +1,5 @@
-# Shanghai New York University Project for Databases CSCI-SHU 213 Summer 2019 
-Professor: Ratan Dey
+# Shanghai New York University Project for Databases CSCI-SHU 213 Summer 2019
+Professor: Ratan Dey\n
 Team member: Neal Shu, Roberto Noel
 
 ## Objective:
