@@ -1,6 +1,6 @@
 # Shanghai New York University Project for Databases CSCI-SHU 213 Summer 2019
-Professor: Ratan Dey\n
-Team member: Neal Shu, Roberto Noel
+### Professor: Ratan Dey
+### Team member: Neal Shu, Roberto Noel
 
 ## Objective:
 The objective of this course project is to provide a realistic experience in the design process of a
